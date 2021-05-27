@@ -3,7 +3,7 @@ import React from 'react'
 import InstructorForm from './Forms/InstructorForm';
 import ClientForm from "./Forms/ClientForm";
 import Login from "./Forms/login";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { useState} from 'react';
 
 const initialFormValues = {
@@ -39,12 +39,38 @@ function App() {
     <Router>
       <div>
         <nav>
-          <h1>Anytime Fitness Login</h1>
+          <h1>Anytime Fitness</h1>
+          <ul>
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+            <li>
+              <Link to="/newUser/instructor">New Instructor Form</Link>
+            </li>
+            <li>
+              <Link to="/newUser/client">New Customer Form</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route exact path="/newUser/instructor">
+            <InstructorForm
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+            />
+          </Route>
+          <Route exact path="/newUser/client">
+            <ClientForm
+            values={formValues}
+            change={inputChange}
+            submit={formSubmit}
+            />
+          </Route>
           <Route exact path="/">
             <Login />
           </Route>
-
-        </nav>
+        </Switch>       
       </div>
     </Router>
     
@@ -58,9 +84,7 @@ export default App;
       <header className="App-header">
         <h1>Fitness App</h1>
         <InstructorForm
-          values={formValues}
-          change={inputChange}
-          submit={formSubmit}
+          
         />
         <ClientForm
           values={formValues}

@@ -20,39 +20,39 @@ export default function InstructorForm (props) {
     }
 
     return (
-    <StyledForm onSubmit={onSubmit}>
-        <div>
-            <h2>Welcome Coach! Fill in the fields below to create your account:</h2>
+        <StyledForm onSubmit={onSubmit}>
+            <div>
+                <h2>Welcome Coach! Fill in the fields below to create your account:</h2>
 
-        <StyledLabel>Username
-            <input
-            value={values.username}
-            onChange={onChange}
-            name='username'
-            type='text'
-            />
-        </StyledLabel>
-        <StyledLabel>Cell Number
-            <input
-            value={values.cell}
-            onChange={onChange}
-            name='cel number'
-            type='number'
-            />
-        </StyledLabel>
-        <StyledLabel>Password
-            <input
-            value={values.password}
-            onChange={onChange}
-            name='password'
-            type='password'
-            />
-        </StyledLabel>
-        
-            <StyledButton>Submit</StyledButton>
-        </div>
+            <StyledLabel>Username
+                <input
+                value={values.username}
+                onChange={onChange}
+                name='username'
+                type='text'
+                />
+            </StyledLabel>
+            <StyledLabel>Cell Number
+                <input
+                value={values.cell}
+                onChange={onChange}
+                name='cel number'
+                type='number'
+                />
+            </StyledLabel>
+            <StyledLabel>Password
+                <input
+                value={values.password}
+                onChange={onChange}
+                name='password'
+                type='password'
+                />
+            </StyledLabel>
+            
+                <StyledButton>Submit</StyledButton>
+            </div>
 
-    </StyledForm>
+        </StyledForm>
 
     )
 
