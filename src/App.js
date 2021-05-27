@@ -2,7 +2,8 @@ import './App.css';
 import React from 'react'
 import InstructorForm from './Forms/InstructorForm';
 import ClientForm from "./Forms/ClientForm";
-import { BrowserRouter as Router } from "./react-router-dom";
+import Login from "./forms/login";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { useState} from 'react';
 
 const initialFormValues = {
@@ -36,9 +37,24 @@ function App() {
 
   return (
     <div>
-      <Router></Router>
+      <Router>
+        <nav>
+          <h1>Anytime Fitness Login</h1>
+          <Route exact path="/">
+            <Login />
+          </Route>
+
+        </nav>
+      </Router>
     </div>
-    <div className="App">
+    
+  );
+}
+
+export default App;
+
+
+{/* <div className="App">
       <header className="App-header">
         <h1>Fitness App</h1>
         <InstructorForm
@@ -52,8 +68,4 @@ function App() {
           submit={formSubmit}
         />
       </header>
-    </div>
-  );
-}
-
-export default App;
+    </div> */}
