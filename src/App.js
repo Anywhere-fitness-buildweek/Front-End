@@ -1,7 +1,9 @@
 import './App.css';
 import React from 'react'
 import InstructorForm from './Forms/InstructorForm';
-import { useState} from 'react'
+import ClientForm from "./Forms/ClientForm";
+import { BrowserRouter as Router } from "./react-router-dom";
+import { useState} from 'react';
 
 const initialFormValues = {
   username:'',
@@ -33,14 +35,22 @@ function App() {
 
 
   return (
+    <div>
+      <Router></Router>
+    </div>
     <div className="App">
       <header className="App-header">
         <h1>Fitness App</h1>
         <InstructorForm
-        values={formValues}
-        change={inputChange}
-        submit={formSubmit}
-      />
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+        />
+        <ClientForm
+          values={formValues}
+          change={inputChange}
+          submit={formSubmit}
+        />
       </header>
     </div>
   );

@@ -7,18 +7,6 @@ export default function ClientForm(props) {
         <Form>
             <h2>Please provide the following information,<br/>then click 'submit' to create your account</h2>
             <Label>
-                First Name: <input
-                    type='text'
-                    name='first_name'
-                />
-            </Label>
-            <Label>
-                Last Name: <input
-                    type='text'
-                    name='last_name'
-                />
-            </Label>
-            <Label>
                 Username: <input
                     type='text'
                     name='username'
