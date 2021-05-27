@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react'
 import InstructorForm from './Forms/InstructorForm';
 import ClientForm from "./Forms/ClientForm";
-import Login from "./forms/login";
+import Login from "./Forms/login";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import { useState} from 'react';
 
@@ -36,8 +36,8 @@ function App() {
 
 
   return (
-    <div>
-      <Router>
+    <Router>
+      <div>
         <nav>
           <h1>Anytime Fitness Login</h1>
           <Route exact path="/">
@@ -45,8 +45,8 @@ function App() {
           </Route>
 
         </nav>
-      </Router>
-    </div>
+      </div>
+    </Router>
     
   );
 }

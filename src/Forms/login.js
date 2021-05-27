@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import * as yup from 'yup';
 import { useHistory } from 'react-router';
+import { StyledForm, StyledLabel, StyledButton } from "./styledForm";
+
 
 
 const INITIAL_FORM_VALUES = {
@@ -74,9 +76,9 @@ export default function Login(props) {
 
     return (
         <div>
-            <h2>Welcome back, foodies!</h2>
-            <form onSubmit={onSubmit}>
-                <label>Username <br/>
+            <h2>Welcome back!</h2>
+            <StyledForm onSubmit={onSubmit}>
+                <StyledLabel>Username <br/>
                         <input
                             onChange={onChange}
                             value={values.username}
@@ -84,8 +86,8 @@ export default function Login(props) {
                             type='text'
                             error={errors.username}
                             />
-                    </label>
-                    <label>Password <br/>
+                    </StyledLabel>
+                    <StyledLabel>Password <br/>
                         <input
                             onChange={onChange}
                             value={values.password}
@@ -93,9 +95,9 @@ export default function Login(props) {
                             type='password'
                             error={errors.password}
                         />
-                    </label>
-                <button variant={disabled ? 'disabled' : 'success'}>Login</button>
-            </form>
+                    </StyledLabel>
+                <StyledButton variant={disabled ? 'disabled' : 'success'}>Login</StyledButton>
+            </StyledForm>
         </div>
     )
 }
