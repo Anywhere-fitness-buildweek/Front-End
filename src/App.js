@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react'
-import InstructorForm from './Forms/InstructorForm';
+// import InstructorForm from './Forms/InstructorForm';
 import ClientForm from "./Forms/ClientForm";
 import Login from "./Forms/login";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -9,14 +9,13 @@ import { useState} from 'react';
 const initialFormValues = {
   username:'',
   password:'',
-  cellNumber:''
 }
 
-const initialInstructors = []
+const initialUsers = []
 
 function App() {
 
-  const [instructors, setInstructors] = useState(initialInstructors)
+  const [users, setUsers] = useState(initialUsers)
   const [formValues, setFormValues] = useState(initialFormValues)
 
   const inputChange = (name, value) => {
@@ -25,12 +24,11 @@ function App() {
 
 
   const formSubmit = () => {
-    const newInstructor = {
+    const newUser = {
       username: formValues.username.trim(),
-      cell: formValues.password.trim(),
-      password: formValues.cellNumber.trim(),
+      password: formValues.password.trim(),
     }
-    setInstructors([...instructors, newInstructor])
+    setUsers([...users, newUser])
     setFormValues(initialFormValues)
   }
 
@@ -45,22 +43,12 @@ function App() {
               <Link to="/">Login</Link>
             </li>
             <li>
-              <Link to="/newUser/instructor">New Instructor Form</Link>
-            </li>
-            <li>
-              <Link to="/newUser/client">New Customer Form</Link>
+              <Link to="/newUser">New User Sign Up</Link>
             </li>
           </ul>
         </nav>
         <Switch>
-          <Route exact path="/newUser/instructor">
-            <InstructorForm
-            values={formValues}
-            change={inputChange}
-            submit={formSubmit}
-            />
-          </Route>
-          <Route exact path="/newUser/client">
+          <Route exact path="/newUser">
             <ClientForm
             values={formValues}
             change={inputChange}

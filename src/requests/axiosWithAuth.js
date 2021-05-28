@@ -1,11 +1,13 @@
 import axios from "axios";
 
-export const axiosWithAuth = () => {
+const axiosWithAuth = () => {
+    const token = JSON.parse(window.localStorage.getItem("token"))
 
   return axios.create({
     headers: {
-      Authorization: JSON.parse(window.localStorage.getItem("token")),
+      authorization: token,
     },
-    baseURL: "https://anywhere-fitness-build-week.herokuapp.com/",
+    baseURL: "https://anywhere-fitness-build-week.herokuapp.com",
   });
 };
+export default axiosWithAuth;

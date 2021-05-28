@@ -1,110 +1,95 @@
 import React,{useState, useEffect} from 'react';
-import axiosWithAuth from "./../requests/axiosWithAuth";
-import * as yup from 'yup';
-import { useHistory } from 'react-router';
+// import axiosWithAuth from "./../requests/axiosWithAuth";
+import axios from "axios";
+import { Link, useHistory } from 'react-router';
 import { StyledForm, StyledLabel, StyledButton } from "./styledForm";
 
 
 
 const INITIAL_FORM_VALUES = {
     username: '',
-    password: ''
+    password: '',
+    role_id: '',
 } 
 
 const INITIAL_FORM_ERRORS = {
     username: '',
-    password: ''
+    password: '',
+    role_id: '',
 }
 
-const schema = yup.object().shape({
-    username: yup.string().required('required'),
-    password: yup.string().required('required')
-})
+const INITIAL_USERS = [];
 
 
-export default function Login(props) {
-    const { submit, setUserID } = props
+export default function Login() {
+    const [users, setUsers] = useState(INITIAL_USERS);
     const [values, setValues] = useState(INITIAL_FORM_VALUES);
     const [errors, setErrors] = useState(INITIAL_FORM_ERRORS)
     const [disabled, setDisabled] = useState(true)
     const { push } = useHistory();
 
-    login = () => {
-        axiosWithAuth()
-        .post("/api/auth/login", values)
-        .then(res => {
-            
-        })
-    }
-
-
-    const onSubmit = event => {
-        event.preventDefault()
-        schema.validate(values)
-        .then(_ => {
-        submit(values, push, setUserID);
-        setValues(INITIAL_FORM_VALUES);
-        setErrors(INITIAL_FORM_ERRORS) 
-        })
-        .catch(err => {
-            console.error(err)
-        })       
-    }
-
-    const onChange = event => {
-        const {name, value} = event.target
-        setValues({
-            ...values,
-             [name]: value
-            })
-        //could insert validation schema here
-
-        yup.reach(schema, name)
-            .validate(value)
-            .then(_ => {
-                setErrors({
-                    ...errors,
-                    [name]: ''
-                })
-            })
-            .catch(err => {
-                setErrors({ 
-                    ...errors,
-                    [name]: err.errors[0]
-                })
-                    setDisabled(true)
-            })
-    }
-
-    useEffect(() => {
-        schema.validate(values)
-            .then(isValid => setDisabled(!isValid))
-            .catch(err => console.log(err))
-    })
+    const onChange = (e) => {
+        setUsers({ ...users, [e.target.name]: e.target.value });
+      };
+      const onSubmit = (evt) => {
+        evt.preventDefault();
+        axios
+          .post("https://anywhere-fitness-build-week.herokuapp.com/api/auth/login", users)
+          .then((res) => {
+            localStorage.setItem("token", JSON.stringify(res.data.token));
+            if (users.role_id === "2") {
+              push("/client-walk");
+            } else if (users.role_id === "1") {
+              push("/inst-walk");
+            }
+            setValues(INITIAL_FORM_VALUES);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
     
 
     return (
         <div>
             <h2>Welcome back!</h2>
             <StyledForm onSubmit={onSubmit}>
-                <StyledLabel>Username <br/>
-                        <input
-                            onChange={onChange}
-                            value={values.username}
-                            name='username'
-                            type='text'
-                            error={errors.username}
-                            />
-                    </StyledLabel>
-                    <StyledLabel>Password <br/>
-                        <input
-                            onChange={onChange}
-                            value={values.password}
-                            name='password'
-                            type='password'
-                            error={errors.password}
+            <StyledLabel>Username <br/>
+                    <input
+                        onChange={onChange}
+                        value={users.username}
+                        name='username'
+                        type='text'
+                        error={errors.username}
                         />
-                    </StyledLabel>
+                </StyledLabel>
+                <StyledLabel>Password <br/>
+                    <input
+                        onChange={onChange}
+                        value={users.password}
+                        name='password'
+                        type='password'
+                        error={errors.password}
+                    />
+                </StyledLabel>
+                <StyledLabel>Client
+                    <input
+                    checked={users.role_id === "2".valueOf()}
+                    value="2"
+                    onChange={onChange}
+                    name="role_id"
+                    type="radio"
+                    />
+                </StyledLabel>
+                <StyledLabel>Instructor
+                    <input
+                        checked={users.role_id === "1"}
+                        value="1"
+                        onChange={onChange}
+                        name="role_id"
+                        type="radio"
+                    />
+                </StyledLabel>
                 <StyledButton variant={disabled ? 'disabled' : 'success'}>Login</StyledButton>
             </StyledForm>
         </div>
