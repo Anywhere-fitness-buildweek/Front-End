@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react'
-// import InstructorForm from './Forms/InstructorForm';
 import ClientForm from "./Forms/ClientForm";
 import Login from "./Forms/login";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";

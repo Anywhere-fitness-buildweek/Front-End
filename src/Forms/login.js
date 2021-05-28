@@ -1,7 +1,7 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
 // import axiosWithAuth from "./../requests/axiosWithAuth";
 import axios from "axios";
-import { Link, useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import { StyledForm, StyledLabel, StyledButton } from "./styledForm";
 
 
@@ -23,9 +23,9 @@ const INITIAL_USERS = [];
 
 export default function Login() {
     const [users, setUsers] = useState(INITIAL_USERS);
-    const [values, setValues] = useState(INITIAL_FORM_VALUES);
-    const [errors, setErrors] = useState(INITIAL_FORM_ERRORS)
-    const [disabled, setDisabled] = useState(true)
+    const [, setValues] = useState(INITIAL_FORM_VALUES);
+    const [errors, ] = useState(INITIAL_FORM_ERRORS)
+    const [disabled, ] = useState(true)
     const { push } = useHistory();
 
     const onChange = (e) => {

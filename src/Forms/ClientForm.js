@@ -24,7 +24,7 @@ const initialDisabled = true;
 export default function SignUp() {
     const [form, setForm] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
-    const [disabled, setDisabled] = useState(initialDisabled);
+    const [/*disabled*/, setDisabled] = useState(initialDisabled);
     const { push } = useHistory();
     
     const formSchema = yup.object().shape({
@@ -65,21 +65,8 @@ export default function SignUp() {
       };
       useEffect(() => {
         formSchema.isValid(form).then((valid) => setDisabled(!valid));
-      }, [form]);
-    // const onSubmit = evt => {
-    //     evt.preventDefault()
-    //     // submit()
-    //     axiosWithAuth()
-	// 		.post('api/auth/register', values)
-	// 		.then(res => {
-	// 			// push('./recipes');
-	// 			console.log(res.data);
-	// 		})
-	// 		.catch(err => {
-	// 			console.log('Username or password not valid, must be unique username.', err);
-	// 		});
-
-    // }
+      });
+    
 
     return (
         <StyledForm onSubmit={onSubmit}>
