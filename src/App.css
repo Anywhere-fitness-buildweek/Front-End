@@ -14,7 +14,10 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: url('/Users/fervelgo/Desktop/lambdaProjects/Unit2/Build-Week/frontend/src/images/banner.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import formImg from '/Users/fervelgo/Desktop/lambdaProjects/Unit2/Build-Week/frontend/src/images/fitness.jpg'
 
 
 const StyledForm = styled.form `
-    background:white;
+    background-image: url(${formImg});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     color: white;
     border: 1px solid black;
     border-radius: 15px;
@@ -18,6 +22,8 @@ const StyledForm = styled.form `
   h2 {
     font-family: Helvetica, sans-serif;
     font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
   }
 `
 
@@ -27,6 +33,7 @@ const StyledLabel = styled.label `
     padding: 10px;
     font-weight: bold;
     margin: 5px;
+    text-shadow: 2px 2px 5px black;
 `
 
 const StyledButton = styled.button `
