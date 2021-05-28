@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+
 const StyledForm = styled.form `
-    background-color: darkgray;
+    background:white;
     color: white;
     border: 1px solid black;
     border-radius: 15px;
@@ -23,8 +24,9 @@ const StyledForm = styled.form `
 const StyledLabel = styled.label `
     font-size: 1.2rem;
     display: block;
-    padding: 5px;
+    padding: 10px;
     font-weight: bold;
+    margin: 5px;
 `
 
 const StyledButton = styled.button `
@@ -40,6 +42,13 @@ const StyledButton = styled.button `
         &:hover {
          transform: scale(1.2);
          }
+`
+
+const StyledInput = styled.input `
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+
 `
 
 export default function InstructorForm (props) {
@@ -64,24 +73,24 @@ return (
     <div>
         <h2>Welcome Coach! Fill in the fields below to create your account:</h2>
 
-    <StyledLabel>Username
-        <input
+    <StyledLabel>Username 
+        <StyledInput
         value={values.username}
         onChange={onChange}
         name='username'
         type='text'
         />
     </StyledLabel>
-    <StyledLabel>Cell Number
-        <input
+    <StyledLabel>Cell Number 
+        <StyledInput
         value={values.cell}
         onChange={onChange}
         name='cel number'
-        type='number'
+        type='text'
         />
     </StyledLabel>
-    <StyledLabel>Password
-        <input
+    <StyledLabel>Password 
+        <StyledInput
         value={values.password}
         onChange={onChange}
         name='password'
