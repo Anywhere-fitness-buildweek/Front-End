@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react';
+import axiosWithAuth from "./../requests/axiosWithAuth";
 import * as yup from 'yup';
 import { useHistory } from 'react-router';
 import { StyledForm, StyledLabel, StyledButton } from "./styledForm";
@@ -27,6 +28,14 @@ export default function Login(props) {
     const [errors, setErrors] = useState(INITIAL_FORM_ERRORS)
     const [disabled, setDisabled] = useState(true)
     const { push } = useHistory();
+
+    login = () => {
+        axiosWithAuth()
+        .post("/api/auth/login", values)
+        .then(res => {
+            
+        })
+    }
 
 
     const onSubmit = event => {

@@ -78,18 +78,3 @@ function App() {
 }
 
 export default App;
-
-
-{/* <div className="App">
-      <header className="App-header">
-        <h1>Fitness App</h1>
-        <InstructorForm
-          
-        />
-        <ClientForm
-          values={formValues}
-          change={inputChange}
-          submit={formSubmit}
-        />
-      </header>
-    </div> */}
