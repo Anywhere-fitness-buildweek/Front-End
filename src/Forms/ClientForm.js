@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import formImg from '/Users/fervelgo/Desktop/lambdaProjects/Unit2/Build-Week/frontend/src/images/fitness3.jpg'
 
 
 export default function ClientForm(props) {
@@ -7,31 +8,31 @@ export default function ClientForm(props) {
         <Form>
             <h2>Please provide the following information,<br/>then click 'submit' to create your account</h2>
             <Label>
-                First Name: <input
+                First Name: <StyledInput
                     type='text'
                     name='first_name'
                 />
             </Label>
             <Label>
-                Last Name: <input
+                Last Name: <StyledInput
                     type='text'
                     name='last_name'
                 />
             </Label>
             <Label>
-                Username: <input
+                Username: <StyledInput
                     type='text'
                     name='username'
                 />
             </Label>
             <Label>
-                Phone: <input
+                Phone: <StyledInput
                     type='tel'
                     name='phone_number'
                 />
             </Label>
             <Label>
-                Password: <input
+                Password: <StyledInput
                     type='text'
                     name='password'
                 />
@@ -42,7 +43,10 @@ export default function ClientForm(props) {
 }
 
 const Form = styled.form`
-    background-color: darkgray;
+    background-image: url(${formImg});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     color: white;
     border: 1px solid black;
     border-radius: 15px;
@@ -55,6 +59,7 @@ const Label = styled.label`
     display: block;
     padding: 5px;
     font-weight: bold;
+    text-shadow: 2px 2px 5px black;
 `
 
 const Button = styled.button`
@@ -66,4 +71,11 @@ const Button = styled.button`
     font-weight: bold;
     border-radius: 20px;
     margin: 15px;
+`
+
+const StyledInput = styled.StyledInput `
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+
 `

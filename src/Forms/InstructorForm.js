@@ -39,15 +39,15 @@ const StyledLabel = styled.label `
 const StyledButton = styled.button `
     background-color: white;
     color: black;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     border: 2px solid grey;
     padding: 15px;
     font-weight: bold;
-    border-radius: 20px;
+    border-radius: 15px;
     margin: 15px;
 
         &:hover {
-         transform: scale(1.2);
+         transform: scale(1.1);
          }
 `
 
@@ -86,6 +86,7 @@ return (
         onChange={onChange}
         name='username'
         type='text'
+        placeholder="Patches O'Houlihan"
         />
     </StyledLabel>
     <StyledLabel>Cell Number 
@@ -94,6 +95,7 @@ return (
         onChange={onChange}
         name='cel number'
         type='text'
+        placeholder='###-###-###'
         />
     </StyledLabel>
     <StyledLabel>Password 
@@ -102,6 +104,7 @@ return (
         onChange={onChange}
         name='password'
         type='password'
+        placeholder="----------"
         />
     </StyledLabel>
     
